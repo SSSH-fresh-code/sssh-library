@@ -51,3 +51,11 @@ export type ReadPostDto = {
   createdAt: string;
   updatedAt: string;
 }
+
+export type PageInfo = {
+  current: number;
+  last: number;
+  total: number;
+  take: number;
+};
+export type Page<T> = {data: T[]; info: PageInfo};
