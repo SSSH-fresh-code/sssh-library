@@ -59,3 +59,28 @@ export type PageInfo = {
   take: number;
 };
 export type Page<T> = {data: T[]; info: PageInfo};
+
+
+export type PagingDto = {
+  page?: number;
+  take?: number;
+  orderby?: string;
+  direction?: 'asc' | 'desc';
+}
+
+export type PagingTopicDto = PagingDto & {
+  like__name?: string;
+}
+
+export type PagingSeriesDto = PagingDto & {
+  like__name?: string;
+  where__topicId?: number;
+}
+
+export type PagingPostDto = PagingDto & {
+  like__title?: string;
+  like__content?: string;
+  where__topicId?: number;
+  where__seriesId?: number;
+  where__authorName?: string;
+}
