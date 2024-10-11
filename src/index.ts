@@ -9,7 +9,7 @@ export const convertUnderbar = (
   return removeUnderbar ? str.replace(/_/g, " ") : str.replace(/ /g, "_");
 };
 
-export type ReadUserDto  = {
+export type ReadUserDto = {
   id: string;
   email: string;
   name: string;
@@ -52,13 +52,40 @@ export type ReadPostDto = {
   updatedAt: string;
 }
 
+export type ReadChatDto = {
+  id: number;
+  chatId: string;
+  name: string;
+  type: MessengerType;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export type ReadChatBotDto = {
+  id: number;
+  botId: string;
+  token: string;
+  name: string;
+  description: string;
+  type: MessengerType;
+  chats: ReadChatDto[];
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export enum MessengerType {
+  TELEGRAM = "TELEGRAM",
+  SLACK = "SLACK",
+  DISCORD = "DISCORD",
+}
+
 export type PageInfo = {
   current: number;
   last: number;
   total: number;
   take: number;
 };
-export type Page<T> = {data: T[]; info: PageInfo};
+export type Page<T> = { data: T[]; info: PageInfo };
 
 
 export type PagingDto = {
@@ -83,4 +110,25 @@ export type PagingPostDto = PagingDto & {
   where__topicId?: number;
   where__seriesId?: number;
   where__authorName?: string;
+}
+
+export type ChatPagingDto = PagingDto & {
+  where__type?: string;
+}
+
+export type ChatBotPagingDto = PagingDto & {
+  where__type?: string;
+}
+
+export type SendChatBotDto = {
+  botId: number;
+  chatId: number;
+  message: string;
+}
+
+export type SendResultDto = {
+  isSuccess: boolean;
+  message: string;
+  chatbot: ReadChatBotDto;
+  chat: ReadChatDto;
 }
