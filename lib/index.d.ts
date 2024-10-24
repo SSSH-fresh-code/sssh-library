@@ -112,3 +112,10 @@ export type SendResultDto = {
     chatbot: ReadChatBotDto;
     chat: ReadChatDto;
 };
+export declare enum BusinessType {
+    CHAT = "CHAT",
+    ERROR = "ERROR"
+}
+export declare enum DataType {
+    JSON = "JSON"
+}
