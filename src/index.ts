@@ -133,6 +133,19 @@ export type SendResultDto = {
   chat: ReadChatDto;
 }
 
+export type LogDto = {
+  id: string;
+  businessType: BusinessType;
+  dataType: DataType;
+  data: string;
+  logDate: Date;
+}
+
+export type PagingLogDto = PagingDto & {
+  where__businessType?: string;
+  where__dataType?: string;
+}
+
 export enum BusinessType {
   CHAT = "CHAT",
   ERROR = "ERROR",
