@@ -123,6 +123,10 @@ export type PagingLogDto = PagingDto & {
     where__businessType?: string;
     where__dataType?: string;
 };
+export type MainPageDto = {
+    recentPosts?: Page<ReadPostDto>;
+    recentMessage?: Page<LogDto>;
+};
 export declare enum BusinessType {
     CHAT = "CHAT",
     ERROR = "ERROR"
